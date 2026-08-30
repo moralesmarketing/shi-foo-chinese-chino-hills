@@ -4,7 +4,7 @@ import { fanFavorites } from "@/lib/site-data";
 
 export default function MenuPreview() {
   return (
-    <section id="menu-preview" className="py-24">
+    <section id="menu-preview" className="pb-24">
       <div className="page-header !pb-14">
         <span className="eyebrow">Fan Favorites</span>
         <h2 className="mt-3 text-3xl sm:text-4xl">What Chino Hills Orders Most</h2>

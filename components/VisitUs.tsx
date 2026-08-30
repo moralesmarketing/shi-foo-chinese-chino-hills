@@ -4,7 +4,7 @@ import OpenStatusBadge from "./OpenStatusBadge";
 
 export default function VisitUs() {
   return (
-    <section id="visit" className="border-t border-line bg-surface-raised py-24">
+    <section id="visit" className="border-t border-line bg-surface-raised pb-24">
       <div className="page-header !pb-14">
         <span className="eyebrow">Visit Us</span>
         <h2 className="mt-3 text-3xl sm:text-4xl">Find Us</h2>

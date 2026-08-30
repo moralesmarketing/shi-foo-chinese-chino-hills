@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/55 to-surface" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/35 to-transparent" />
 
-      <div className="section relative z-10 py-24">
+      <div className="relative z-10 w-full px-6 py-24 sm:px-10 md:px-14 lg:px-20">
         <div className="max-w-xl">
           <span className="text-xs font-bold uppercase tracking-[0.14em] text-white/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
             Chino Hills, CA

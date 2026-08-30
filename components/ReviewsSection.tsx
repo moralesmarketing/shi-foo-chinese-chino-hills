@@ -4,7 +4,7 @@ import { StarIcon } from "./Icons";
 export default function ReviewsSection() {
   const featured = testimonials.slice(0, 3);
   return (
-    <section className="py-24">
+    <section className="pb-24">
       <div className="page-header !pb-14">
         <span className="eyebrow">Reviews</span>
         <h2 className="mt-3 text-3xl sm:text-4xl">
