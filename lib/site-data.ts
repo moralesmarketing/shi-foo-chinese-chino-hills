@@ -1,12 +1,16 @@
 export const business = {
   name: "Shi Foo",
-  tagline: "Fresh Chinese Food, Made Your Way",
+  shortTagline: "Fresh Chinese Food, Made Your Way",
   city: "Chino Hills",
+  neighborhood: "Los Serranos",
   address: {
     line1: "15942 Los Serranos Country Club Dr",
     line2: "Chino Hills, CA 91709",
+    street: "15942 Los Serranos Country Club Dr",
+    cityStateZip: "Chino Hills, CA 91709",
   },
   phone: "(909) 786-1542",
+  phoneDigits: "+19097861542",
   phoneHref: "tel:+19097861542",
   email: null as string | null,
   yelpUrl: "https://www.yelp.com/biz/shi-foo-chino-hills",
@@ -15,6 +19,16 @@ export const business = {
     "https://www.google.com/maps/search/?api=1&query=Shi+Foo+15942+Los+Serranos+Country+Club+Dr+Chino+Hills+CA+91709",
   mapEmbedSrc:
     "https://www.google.com/maps?q=Shi+Foo,+15942+Los+Serranos+Country+Club+Dr,+Chino+Hills,+CA+91709&output=embed",
+  // 0 = Sunday .. 6 = Saturday, 24h "HH:MM"
+  hoursByDay: [
+    { day: "Sunday", open: "11:00", close: "20:00" },
+    { day: "Monday", open: "11:00", close: "20:30" },
+    { day: "Tuesday", open: "11:00", close: "20:30" },
+    { day: "Wednesday", open: "11:00", close: "20:30" },
+    { day: "Thursday", open: "11:00", close: "20:30" },
+    { day: "Friday", open: "11:00", close: "20:30" },
+    { day: "Saturday", open: "11:00", close: "20:30" },
+  ],
   hours: [
     { day: "Monday", time: "11:00 AM – 8:30 PM" },
     { day: "Tuesday", time: "11:00 AM – 8:30 PM" },
@@ -29,11 +43,34 @@ export const business = {
   },
 };
 
+export const trustPoints = [
+  {
+    title: "Family Owned",
+    detail: "Run by Eric and Young since day one.",
+    icon: "home",
+  },
+  {
+    title: "80+ Dishes, Cooked Fresh",
+    detail: "Made to order, not sitting under a heat lamp.",
+    icon: "flame",
+  },
+  {
+    title: "Non-GMO Oils, No Added MSG",
+    detail: "One of the first Chinese kitchens in the area to switch.",
+    icon: "leaf",
+  },
+  {
+    title: "Gluten-Free & Peanut-Free Options",
+    detail: "A real GF menu, cooked in a peanut-free kitchen.",
+    icon: "shield",
+  },
+];
+
 export type MenuItem = {
   name: string;
   price: string;
   description?: string;
-  tag?: "Popular" | "Gluten-Free" | "Vegetarian";
+  tag?: "gf" | "veg" | "popular";
 };
 
 export type MenuCategory = {
@@ -49,16 +86,16 @@ export const menu: MenuCategory[] = [
     items: [
       { name: "Egg Rolls", price: "$0.76", description: "Each" },
       { name: "Crispy Shrimp", price: "$1.75", description: "2 pieces" },
-      { name: "Cream Cheese Wontons", price: "$1.95", description: "3 pieces" },
+      { name: "Cream Cheese Wontons", price: "$1.95", description: "3 pieces", tag: "veg" },
     ],
   },
   {
     id: "soup",
     title: "Soup",
     items: [
-      { name: "Mixed Veggies Soup", price: "$5.50", tag: "Vegetarian" },
+      { name: "Mixed Veggies Soup", price: "$5.50", tag: "veg" },
       { name: "Egg Flower Soup", price: "$6.50" },
-      { name: "Tofu Veggie Soup", price: "$6.50", tag: "Vegetarian" },
+      { name: "Tofu Veggie Soup", price: "$6.50", tag: "veg" },
       { name: "Combo Noodle Soup", price: "$6.50" },
       { name: "Combination Soup", price: "$7.50" },
     ],
@@ -69,8 +106,8 @@ export const menu: MenuCategory[] = [
     items: [
       { name: "Chicken Fried Rice", price: "$7.95" },
       { name: "Beef Fried Rice", price: "$7.95" },
-      { name: "House Special Fried Rice", price: "$7.95", tag: "Popular" },
-      { name: "BBQ Pork Fried Rice", price: "$8.95", tag: "Popular" },
+      { name: "House Special Fried Rice", price: "$7.95", tag: "popular" },
+      { name: "BBQ Pork Fried Rice", price: "$8.95", tag: "popular" },
     ],
   },
   {
@@ -80,7 +117,7 @@ export const menu: MenuCategory[] = [
       { name: "Chicken Chow Mein", price: "$8.50" },
       { name: "Beef Chow Mein", price: "$8.50" },
       { name: "Shrimp Chow Mein", price: "$8.95" },
-      { name: "House Special Chow Mein", price: "$9.50", tag: "Popular" },
+      { name: "House Special Chow Mein", price: "$9.50", tag: "popular" },
     ],
   },
   {
@@ -91,17 +128,14 @@ export const menu: MenuCategory[] = [
       { name: "Beef Noodles", price: "$8.50" },
       { name: "Shrimp Noodles", price: "$8.95" },
       { name: "Fish Noodles", price: "$8.95" },
-      { name: "House Special Trio Noodles", price: "$8.95", tag: "Popular" },
+      { name: "House Special Trio Noodles", price: "$8.95", tag: "popular" },
     ],
   },
   {
-    id: "meat-entrees",
+    id: "stir-fry",
     title: "Stir-Fry Entrees",
     items: [
-      {
-        name: "Chicken with Mixed Veggies",
-        price: "$7.95",
-      },
+      { name: "Chicken with Mixed Veggies", price: "$7.95" },
       { name: "Beef with Mixed Veggies", price: "$8.50" },
       { name: "Shrimp with Mixed Veggies", price: "$9.50" },
       { name: "Shrimp Broccoli", price: "$9.50" },
@@ -121,14 +155,14 @@ export const menu: MenuCategory[] = [
   },
   {
     id: "gluten-free",
-    title: "Gluten-Free Entrees",
+    title: "Gluten-Free Menu",
     items: [
       {
-        name: "Gluten-Free Menu",
+        name: "Gluten-Free Entrees",
         price: "$9.95 – $13.50",
         description:
           "Made-to-order GF versions of popular dishes, including Orange Chicken, cooked with non-GMO oils.",
-        tag: "Gluten-Free",
+        tag: "gf",
       },
     ],
   },
@@ -166,15 +200,14 @@ export type FanFavorite = {
 export const fanFavorites: FanFavorite[] = [
   {
     name: "Orange Chicken",
-    description:
-      "The dish regulars ask for by name — crispy, sweet-and-savory, and available made gluten-free with non-GMO oils.",
+    description: "Made with real oranges and no corn syrup — crispy, sweet-savory, and available gluten-free.",
     tag: "Gluten-Free Available",
     image: "/images/orange-chicken.jpg",
   },
   {
     name: "BBQ Pork Fried Rice",
     price: "$8.95",
-    description: "A steam-table staple — reviewers add shrimp for a couple bucks more and call it their favorite.",
+    description: "A steam-table staple — regulars add shrimp for a couple bucks more and call it their favorite.",
     tag: "Popular",
     image: "/images/bbq-pork-fried-rice.jpg",
   },
@@ -192,14 +225,14 @@ export const fanFavorites: FanFavorite[] = [
   },
   {
     name: "Spicy Chicken",
-    description: "Made to your heat level — order it with camarones and a 5-scoop spice for the full experience.",
+    description: "Made to your heat level, from mild to a full 5-scoop spice.",
     tag: "Made to Order",
     image: "/images/spicy-chicken.jpg",
   },
   {
     name: "House Special Chow Mein",
     price: "$9.50",
-    description: "Thicker noodles, more flavor — reviewers put it head-to-head with the mall-food-court standard and win.",
+    description: "Thicker noodles, more flavor — reviewers put it up against the food-court standard and win.",
     tag: "Popular",
     image: "/images/chow-mein.jpg",
   },
@@ -214,7 +247,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Me and my family are all Celiac and this has been our favorite Chinese food place so far. The service was great and the server was aware of our needs and very helpful. We tried the spicy chicken, orange chicken, house special noodle soup and beef fried rice — none of us had any reaction and we will definitely be back.",
+      "Me and my family are all Celiac and this has been our favorite Chinese food place so far. We tried the spicy chicken, orange chicken, house special noodle soup and beef fried rice — none of us had any reaction and we will definitely be back.",
     author: "Tim Gepford",
     source: "Google",
   },
@@ -226,13 +259,13 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "I was looking for a better Chinese fast food restaurant that I could feel confident eating at — one that was clean and served fresh, delicious food. Shi Foo was exactly what I was looking for. My family and I eat here every Friday, sometimes even twice a week!",
-    author: "Mom G",
+      "I was looking for a Chinese fast food restaurant I could feel confident eating at — clean, fresh, delicious. Shi Foo was exactly what I was looking for. My family eats here every Friday, sometimes twice a week!",
+    author: "Mom G.",
     source: "Google",
   },
   {
     quote:
-      "Tons of gluten-free options. They even offered to make me GF Orange Chicken and it was delicious! My wife and kids loved the regular non-GF stuff and said mine tasted great as well.",
+      "Tons of gluten-free options. They even offered to make me GF Orange Chicken and it was delicious! My wife and kids loved the regular stuff too.",
     author: "Adam Aarts",
     source: "Google",
   },
@@ -244,7 +277,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Always hot, fresh, fast food with quick service — usually in and out in ten minutes or so. I highly recommend the walnut shrimp dish!",
+      "Always hot, fresh, fast food with quick service — usually in and out in ten minutes. I highly recommend the walnut shrimp dish!",
     author: "Marcos Regalado",
     source: "Google",
   },
@@ -254,12 +287,16 @@ export const faqs = [
   {
     question: "Do you offer gluten-free options?",
     answer:
-      "Yes — Shi Foo has a dedicated gluten-free menu cooked with non-GMO oils, and can make GF versions of popular dishes like Orange Chicken on request.",
+      "Yes — Shi Foo keeps a dedicated gluten-free menu cooked with non-GMO oils, and can make GF versions of popular dishes like Orange Chicken on request.",
+  },
+  {
+    question: "Is the kitchen peanut-free?",
+    answer: "Yes — Shi Foo operates as a peanut-free facility.",
   },
   {
     question: "Do you have vegetarian dishes?",
     answer:
-      "Yes. Several soups and stir-fries are vegetarian, and the kitchen can adjust most dishes to be meat-free on request.",
+      "Yes. Several soups and stir-fries are vegetarian, and most dishes can be adjusted meat-free on request.",
   },
   {
     question: "Can I order delivery?",
@@ -276,3 +313,45 @@ export const faqs = [
     answer: "Yes — a private parking lot is available right outside the restaurant.",
   },
 ];
+
+export type GalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  wide?: boolean;
+};
+
+export const galleryImages: GalleryImage[] = [
+  {
+    src: "/images/gallery/real-fried-rice.jpg",
+    alt: "Vegetable and tofu fried rice with broccoli, a real Shi Foo takeout order",
+    caption: "Vegetable & Tofu Fried Rice",
+  },
+  {
+    src: "/images/gallery/real-tofu-veggies.jpg",
+    alt: "Tofu and mixed vegetables over noodles in sauce, a real Shi Foo takeout order",
+    caption: "Tofu & Mixed Vegetables",
+  },
+  {
+    src: "/images/orange-chicken.jpg",
+    alt: "Orange chicken",
+    caption: "Orange Chicken",
+  },
+  {
+    src: "/images/mongolian-beef.jpg",
+    alt: "Mongolian beef",
+    caption: "Mongolian Beef",
+  },
+  {
+    src: "/images/bbq-pork-fried-rice.jpg",
+    alt: "BBQ pork fried rice",
+    caption: "BBQ Pork Fried Rice",
+  },
+  {
+    src: "/images/walnut-shrimp.jpg",
+    alt: "Walnut shrimp",
+    caption: "Walnut Shrimp",
+  },
+];
+
+export const galleryPlaceholders = ["Dining Room", "Storefront", "The Kitchen"];
