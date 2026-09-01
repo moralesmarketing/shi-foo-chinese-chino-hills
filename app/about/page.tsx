@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { LeafIcon, ShieldIcon, WheatOffIcon, FlameIcon } from "@/components/Icons";
 import { business } from "@/lib/site-data";
 
@@ -54,9 +55,17 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-line-strong bg-surface-sunken/60 text-center">
-          <span className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Eric &amp; Young</span>
-          <span className="text-xs text-ink-faint">Photo coming soon</span>
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-line">
+          <Image
+            src="/images/gallery/real-storefront.jpg"
+            alt="Shi Foo storefront sign, &quot;Asian Food Re-Mastered,&quot; at their Chino Hills location"
+            fill
+            sizes="(min-width: 768px) 40vw, 90vw"
+            className="object-cover"
+          />
+          <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-4 py-3 text-xs font-semibold text-white">
+            Shi Foo, Chino Hills
+          </span>
         </div>
       </div>
 
