@@ -323,6 +323,21 @@ export type GalleryImage = {
 
 export const galleryImages: GalleryImage[] = [
   {
+    src: "/images/gallery/real-storefront.jpg",
+    alt: "Shi Foo storefront sign, \"Asian Food Re-Mastered,\" at their Chino Hills location",
+    caption: "Our Storefront",
+  },
+  {
+    src: "/images/gallery/real-combo-box.jpg",
+    alt: "Takeout combo box with orange chicken, chow mein, and string bean chicken, a real Shi Foo order",
+    caption: "Takeout Combo Plate",
+  },
+  {
+    src: "/images/gallery/real-dine-in.jpg",
+    alt: "Sizzling beef lo mein on a hot plate, served dine-in at Shi Foo",
+    caption: "Sizzling Beef Lo Mein",
+  },
+  {
     src: "/images/gallery/real-fried-rice.jpg",
     alt: "Vegetable and tofu fried rice with broccoli, a real Shi Foo takeout order",
     caption: "Vegetable & Tofu Fried Rice",
@@ -332,26 +347,6 @@ export const galleryImages: GalleryImage[] = [
     alt: "Tofu and mixed vegetables over noodles in sauce, a real Shi Foo takeout order",
     caption: "Tofu & Mixed Vegetables",
   },
-  {
-    src: "/images/orange-chicken.jpg",
-    alt: "Orange chicken",
-    caption: "Orange Chicken",
-  },
-  {
-    src: "/images/mongolian-beef.jpg",
-    alt: "Mongolian beef",
-    caption: "Mongolian Beef",
-  },
-  {
-    src: "/images/bbq-pork-fried-rice.jpg",
-    alt: "BBQ pork fried rice",
-    caption: "BBQ Pork Fried Rice",
-  },
-  {
-    src: "/images/walnut-shrimp.jpg",
-    alt: "Walnut shrimp",
-    caption: "Walnut Shrimp",
-  },
 ];
 
-export const galleryPlaceholders = ["Dining Room", "Storefront", "The Kitchen"];
+export const galleryPlaceholders: string[] = [];
